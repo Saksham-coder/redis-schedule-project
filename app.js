@@ -7,6 +7,12 @@ var app = express();
 
 app.use(express.json())
 
+app.get('/', (req, res) => {
+    res.status(200).json({
+        message: 'Server is Up!',
+    });
+})
+
 app.use('/api/v1/job', jobRouter)
 
 module.exports = app;
