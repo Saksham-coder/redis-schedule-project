@@ -1,8 +1,10 @@
 const mongoose = require('mongoose')
+const logger = require('./helpers/loggers')
 
 const app = require('./app')
 
-const DB = "mongodb+srv://saksham:ZFaciHpNZnOunW7R@cluster0.iusod.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+// const DB = "mongodb+srv://saksham:ZFaciHpNZnOunW7R@cluster0.iusod.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const DB = "mongodb://localhost:27017/saksham"
 
 mongoose
 	.connect(DB, {
@@ -10,12 +12,12 @@ mongoose
         useUnifiedTopology: true 
 	})
 	.then((con) => {
-		console.log('DATABSE connected successfully');
+		logger.info('DATABSE connected successfully')
 	});
 
 const PORT = process.env.PORT || 3000 ;
 
 
 app.listen(PORT, () => {
-	console.log(`App running on port ${PORT}.....`);
+	logger.info(`App running on port ${PORT}.....`)
 });
